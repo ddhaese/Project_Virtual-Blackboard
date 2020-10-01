@@ -1,0 +1,82 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+#control {
+    width: 30px;
+    height: 100%;
+    z-index: 2;
+    background: #222222;
+    border: solid 1px #333333;
+}
+
+#board {
+    flex-grow: 1;
+    height: 100%;
+    z-index: 1;
+}
+
+#control {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#control li {
+    padding: 0;
+    margin: 10px auto;
+}
+
+#control li.spacer {
+    margin: 10px auto;
+    width: 30px;
+    height: 30px;
+}
+
+.draw-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.spacer {
+    width: 20px;
+    height: 20px;
+}
+
+.line-width {
+    background-color: rgb(255, 255, 255);
+}
+
+.selected {
+    border: 1.5px solid yellow;
+}
+
+.draw-color:not(.selected), .board-type:not(.selected), .line-width:not(.selected) {
+    border: 1px solid grey;
+}
+
+.board-type {
+    width: 26px;
+    height: 26px;
+    background-size: 28px;
+}
+
+#save-button-svg, #save-button-png {
+    width: 30px;
+    height: 30px;
+}
+
+#save-button-svg {
+    background: url("../img/save-svg.png");
+}
+
+#save-button-png {
+    background: url("../img/save-png.png");
+}

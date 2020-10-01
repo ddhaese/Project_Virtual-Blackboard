@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bord</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="David D'Haese">
+    <meta name="description" content="A fullscreen whiteboard or chalkboard for in the classroom">
+    <meta name="keywords" content="whiteboard, chalkboard, classroom, virtual, blackboard, school, teaching">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="js/schoolBoard.js"></script>
+    <link rel="stylesheet" href="css/schoolBoard.css">
+    <link rel="icon" type="image/png" href="img/favicon.ico" sizes="16x16">
+</head>
+
+<body onload="loadBoard()" oncontextmenu="return false;" onresize="onResize()">
+    <ul id="control">
+        <li class="spacer"></li>
+    </ul>
+    <canvas id="board"></canvas>
+    
+    <p hidden>This document is licensed under the GNU Affero General Public License v3.0</p>
+</body>
+
+</html>
