@@ -1,6 +1,10 @@
-# board
+# Virtual Blackboard
 
 A virtual blackboard loosely based on the blackboard of [Mohamed Moustafa](https://github.com/mmoustafa/chalkboard).
+
+## Demo
+
+See [here](https://ddhaese.github.io/Project_Virtual-Blackboard/.).
 
 ## Usage
 
