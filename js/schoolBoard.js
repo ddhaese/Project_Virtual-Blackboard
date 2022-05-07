@@ -95,7 +95,11 @@ function loadBoard() {
 	// Event-listeners
 	canvas.addEventListener("mousedown", onMouseDown);
 	canvas.addEventListener("mouseup", onMouseUp);
-	canvas.addEventListener("mousemove", onMousemove);
+	canvas.addEventListener("mousemove", onMouseMove);
+	
+	canvas.addEventListener("touchstart", onPenDown);
+	canvas.addEventListener("touchend", onMouseUp);
+	canvas.addEventListener("touchmove", onPenMove);
 
 	document.querySelectorAll(".line-width").forEach(b => {
 		b.addEventListener("click", setLineWidth);
@@ -119,10 +123,18 @@ function loadBoard() {
 
 	saveButtonSVG.addEventListener("click", onSaveSVG);
 	saveButtonPNG.addEventListener("click", onSavePNG);
+
+	setDrawTool("chalk");
+}
+
+function onResize() {
+	if (canvas) {
+		canvas.width = canvas.offsetWidth;
+		canvas.height = canvas.offsetHeight;
+	}
 }
 
 function onMouseDown(event) {
-
 	state = 1 - event.button;
 
 	if (state === 1) {
@@ -136,20 +148,13 @@ function onMouseDown(event) {
 	}
 }
 
-function onResize() {
-	if (canvas) {
-		canvas.width = canvas.offsetWidth;
-		canvas.height = canvas.offsetHeight;
-	}
-}
-
 function onMouseUp() {
 	state = 0;
 	paths.push(path);
 	path = [];
 }
 
-function onMousemove(event) {
+function onMouseMove(event) {
 	curPos = [
 		event.pageX - canvas.offsetLeft,
 		event.pageY - canvas.offsetTop];
@@ -158,6 +163,32 @@ function onMousemove(event) {
 		path.push(curPos);
 		draw();
 	} else if (state === -1) {
+		erase()
+	}
+}
+
+function onPenDown(event) {
+	if (!event.shiftKey) {
+		x = event.changedTouches[0].pageX - canvas.offsetLeft;
+		y = event.changedTouches[0].pageY - canvas.offsetTop;
+
+		path.push([x, y]);
+		draw();
+	
+	} else if (event.shiftKey) {
+		erase();
+	}
+}
+
+function onPenMove(event) {
+	curPos = [
+		event.changedTouches[0].pageX - canvas.offsetLeft,
+		event.changedTouches[0].pageY - canvas.offsetTop];
+
+	if (!event.shiftKey) {
+		path.push(curPos);
+		draw();
+	} else if (event.shiftKey) {
 		erase()
 	}
 }
