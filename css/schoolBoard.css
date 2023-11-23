@@ -6,6 +6,7 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    width: 100%;
 }
 
 #control {
